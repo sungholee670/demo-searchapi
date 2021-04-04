@@ -2,7 +2,7 @@ package com.example.searchapidemo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,9 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity implements SongListViewAdapter.ListBtnClickListener {
 
@@ -64,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements SongListViewAdapt
         Log.d(TAG,"starting a query thread");
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     private void makeSongList() {
         if(favoriteSong.isExistJson()) {
@@ -140,16 +141,13 @@ public class MainActivity extends AppCompatActivity implements SongListViewAdapt
         }
         @Override
         public void run() {
-            if(data.getCategory() == SongData.SongDataCategory.List) {
+            if(data.getCategory() == SongData.SongDataCategory.List)
                 data.querySongList(url);
-                msgHandler.obtainMessage(SongData.MSG_COMPELTED, data.getAdapter()).sendToTarget();
-            }
-            else {
+            else
                 favoriteSong.makeFavoriteList();
-            }
+
+            msgHandler.obtainMessage(SongData.MSG_COMPELTED, data.getAdapter()).sendToTarget();
         }
     }
-
-
 
 }
