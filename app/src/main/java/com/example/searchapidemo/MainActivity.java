@@ -31,11 +31,6 @@ public class MainActivity extends AppCompatActivity implements SongListViewAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = (ListView)findViewById(R.id.songlistview);
-        ListView favoriteView = (ListView)findViewById(R.id.songfavoriteview);
-        listView.setVisibility(View.VISIBLE) ;
-        favoriteView.setVisibility(View.INVISIBLE) ;
-
         msgHandler = new SongHandler();
         listSong = new SongData(SongData.SongDataCategory.List, this);
         favoriteSong = new SongData(SongData.SongDataCategory.Favorite, this);
