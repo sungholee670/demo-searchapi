@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/list_page"
+        android:enabled="true"
+        android:icon="@drawable/list"
+        android:title="@string/list"/>
+    <item
+        android:id="@+id/favorite_page"
+        android:enabled="true"
+        android:icon="@drawable/star_check"
+        android:title="@string/favorite"/>
+</menu>
